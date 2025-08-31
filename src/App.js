@@ -363,7 +363,7 @@ function App() {
         <h1 style={{ letterSpacing: '2px' }}>Todo App</h1>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ color: '#ddd', fontSize: 14 }}>Hi, <b>{user.name}</b></span>
-          <button onClick={onLogout} style={{ ...buttonStyle, padding: '6px 12px', background: '#444' }}>Logout</button>
+          <button onClick={onLogout} style={{ ...buttonStyle, padding: '6px 12px', background: '#444' }}>Ameer</button>
         </div>
       </div>
       <div style={{ display: 'flex', marginBottom: 20 }}>
