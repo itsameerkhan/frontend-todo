@@ -225,7 +225,7 @@ function App() {
   // Fetch todos from backend (scoped by user)
   useEffect(() => {
     if (!user) return;
-    fetch('https://todo-backend-test.azurewebsites.net/', { headers: { 'X-User': user.name } })
+    fetch('http://localhost:8080/api/todos', { headers: { 'X-User': user.name } })
       .then(res => {
         if (!res.ok) throw new Error('Backend not reachable');
         return res.json();
@@ -255,7 +255,7 @@ function App() {
     if (!title) return;
     const newTodo = { title, completed: false };
 
-    fetch('https://todo-backend-test.azurewebsites.net/', {
+    fetch('http://localhost:8080/api/todos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-User': user.name },
       body: JSON.stringify(newTodo)
@@ -275,7 +275,7 @@ function App() {
   };
 
   const deleteTodo = (id) => {
-    fetch(`https://todo-backend-test.azurewebsites.net/${id}`, { method: 'DELETE', headers: { 'X-User': user.name } })
+    fetch(`http://localhost:8080/api/todos/${id}`, { method: 'DELETE', headers: { 'X-User': user.name } })
       .then(res => {
         if (!res.ok) throw new Error('Backend not reachable');
         setTodos(todos.filter(todo => todo.id !== id));
@@ -363,7 +363,7 @@ function App() {
         <h1 style={{ letterSpacing: '2px' }}>Todo App</h1>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ color: '#ddd', fontSize: 14 }}>Hi, <b>{user.name}</b></span>
-          <button onClick={onLogout} style={{ ...buttonStyle, padding: '6px 12px', background: '#444' }}>Ameer</button>
+          <button onClick={onLogout} style={{ ...buttonStyle, padding: '6px 12px', background: '#444' }}>Logout</button>
         </div>
       </div>
       <div style={{ display: 'flex', marginBottom: 20 }}>
