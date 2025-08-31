@@ -225,7 +225,7 @@ function App() {
   // Fetch todos from backend (scoped by user)
   useEffect(() => {
     if (!user) return;
-    fetch('http://localhost:8080/api/todos', { headers: { 'X-User': user.name } })
+    fetch('https://todo-backend-test.azurewebsites.net/api/todos', { headers: { 'X-User': user.name } })
       .then(res => {
         if (!res.ok) throw new Error('Backend not reachable');
         return res.json();
@@ -255,7 +255,7 @@ function App() {
     if (!title) return;
     const newTodo = { title, completed: false };
 
-    fetch('http://localhost:8080/api/todos', {
+    fetch('https://todo-backend-test.azurewebsites.net/api/todos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-User': user.name },
       body: JSON.stringify(newTodo)
@@ -275,7 +275,7 @@ function App() {
   };
 
   const deleteTodo = (id) => {
-    fetch(`http://localhost:8080/api/todos/${id}`, { method: 'DELETE', headers: { 'X-User': user.name } })
+    fetch(`https://todo-backend-test.azurewebsites.net/api/todos/${id}`, { method: 'DELETE', headers: { 'X-User': user.name } })
       .then(res => {
         if (!res.ok) throw new Error('Backend not reachable');
         setTodos(todos.filter(todo => todo.id !== id));
